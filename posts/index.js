@@ -20,8 +20,8 @@ app.post('/posts', async (req, res) => {
         id,
         title
     };
-
-    await axios.post('http://localhost:4005/events', {
+    console.log('sending request to http://event-broker-srv:4005/events');
+    await axios.post('http://event-broker-srv:4005/events', {
         type: 'POST_CREATED',
         data: {
             id,
@@ -39,5 +39,6 @@ app.post('/events', (req, res) => {
 let posts = {};
 
 app.listen(4000, () => {
+    console.log('Hi there!');
     console.log('Posts service listening on port 4000');
 });
